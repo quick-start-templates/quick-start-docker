@@ -1,0 +1,53 @@
+version: '3.1'
+
+services:
+    mysql:
+        image: mysql
+        networks:
+            - localhost
+        ports:
+            - 3306:3306
+        volumes:
+            - ./mysql/conf:/etc/mysql/conf.d
+            - ./mysql/init:/docker-entrypoint-initdb.d
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+
+    postgres:
+        image: postgres
+        networks:
+            - localhost
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_PASSWORD: postgres
+
+    redis:
+        image: redis
+        networks:
+            - localhost
+        ports:
+            - 6379:6379
+
+    tomcat:
+        image: tomcat
+        networks:
+            - localhost
+        ports: 
+            - 8080:8080
+        volumes:
+            - ./tomcat/webapps:/usr/local/tomcat/webapps:ro
+
+    nginx:
+        image: nginx
+        networks:
+            - localhost
+        ports:
+            - 80:80
+        volumes:
+            - ./nginx/conf:/etc/nginx/conf.d:ro
+            - ./nginx/html:/etc/nginx/html:ro
+
+networks:
+    localhost:
+
