@@ -48,6 +48,15 @@ services:
             - ./nginx/conf:/etc/nginx/conf.d:ro
             - ./nginx/html:/etc/nginx/html:ro
 
+    elastic:
+        image: elasticsearch
+        networks:
+            - localhost
+        ports:
+            - 9200:9200
+        volumes:
+            - ./elastic/data:/usr/share/elasticsearch/data
+
 networks:
     localhost:
 

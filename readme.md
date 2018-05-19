@@ -90,6 +90,16 @@ $ docker-compose up nginx -d
 
 Open your browser and navigate to http://127.0.0.1 .
 
+## How to play with Elasticsearch 
+
+- Start Elasticsearch server in Docker
+
+```shell
+$ docker-compose up elastic -d
+```
+
+Done!
+
 ## How to use multple services together
 
 If you want to proxy your Tomcat server with Nginx, modify or create your own `nginx.conf` that redirect all requests to upstream server `tomcat`, 
